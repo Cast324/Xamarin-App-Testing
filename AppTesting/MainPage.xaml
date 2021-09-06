@@ -8,6 +8,7 @@
     <StackLayout>
         <Entry x:Name="pokeNameEntry"></Entry>
         <Button Text="Get Pokemon" Clicked="Button_Clicked"></Button>
+        <Image x:Name="pokemonImage"></Image>
     </StackLayout>
 
 </ContentPage>
