@@ -15,22 +15,23 @@ namespace AppTesting
 {
     public partial class MainPage : ContentPage
     {
-        public PokemonModel pokemon { get; set; }
+        public PokemonModel Pokemon { get; set; }
         public MainPage()
         {
             InitializeComponent();
+            pokemonName.BindingContext = this;
         }
 
         async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
             await GetPokemon();
-            pokemonImage.Source = ImageSource.FromUri(new Uri("https://cdn.cnn.com/cnnnext/dam/assets/210226041421-02-pokemon-anniversary-design.jpg"));
         }
 
         async Task GetPokemon()
         {
             var fallbackPolicy = Policy<PokemonModel>.Handle<ApiException>(ex => ex.StatusCode == HttpStatusCode.NotFound).FallbackAsync(HandleException);
-            pokemon = await fallbackPolicy.ExecuteAsync(GetPokemonAsync);
+            Pokemon = await fallbackPolicy.ExecuteAsync(GetPokemonAsync);
+            pokemonImage.Source = ImageSource.FromUri(new Uri(Pokemon.sprites.front_default));
         }
 
         private async Task<PokemonModel> GetPokemonAsync()

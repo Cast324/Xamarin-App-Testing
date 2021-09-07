@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              iOS:Page.UseSafeArea="True"
+             BindingContext="MainPage"
              x:Class="AppTesting.MainPage">
-    
+
     <StackLayout>
         <Entry x:Name="pokeNameEntry"></Entry>
         <Button Text="Get Pokemon" Clicked="Button_Clicked"></Button>
         <Image x:Name="pokemonImage"></Image>
+        <Label x:Name="pokemonName" Text="{Binding Pokemon.name}"></Label>
     </StackLayout>
 
 </ContentPage>
