@@ -7,9 +7,9 @@
              x:Class="AppTesting.MainPage">
 
     <StackLayout>
-        <Entry x:Name="pokeNameEntry"></Entry>
-        <Button Text="Get Pokemon" Clicked="Button_Clicked"></Button>
-        <Image x:Name="pokemonImage"></Image>
+        <Entry x:Name="pokeNameEntry" Text="{Binding Query}"></Entry>
+        <Button Text="Get Pokemon" Command="{Binding GetPokemonCommand}"></Button>
+        <Image x:Name="pokemonImage" Source="{Binding PokemonImage}"></Image>
         <Label x:Name="pokemonName" Text="{Binding Pokemon.name}"></Label>
     </StackLayout>
 
